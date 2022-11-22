@@ -1,4 +1,4 @@
-const socket = io();
+const socket = io("http://localhost:3000");
 
 const id = 1234567890; // cookie 활용
 const moimId = 1;
