@@ -20,6 +20,6 @@ const io = socketIO(server);
 io.on("connection", (socket) => {
     socket.on("chat", (data) => {
         io.emit("chat", data);
-        console.log(`server - char : ${data}`)
+        console.log(`server - char : ${data.id}, ${data.moimId}, ${data.name}, ${data.message}, ${data.createdAt}`)
     })
 })
