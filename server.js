@@ -1,6 +1,7 @@
 const express = require('express');
 const socketIO = require('socket.io');
 const app = express();
+const cors = require('cors');
 
 const chatRouter = require('./routes/chat'); // client
 const path = require("path"); // client
@@ -8,6 +9,11 @@ app.use(express.static(path.join(__dirname, "client"))); // client
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+const corsOptions = {
+    origin: "http://localhost:8080",
+    credentials: true
+};
+app.use(cors(corsOptions));
 
 app.use("/", chatRouter); // client
 
