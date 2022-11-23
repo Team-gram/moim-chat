@@ -9,10 +9,18 @@ app.use(express.static(path.join(__dirname, "client"))); // client
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+const whitelist = ["http://localhost:8080", "http://localhost:8081", "http://localhost:3000"];
 const corsOptions = {
-    origin: ["http://localhost:8080", "http://localhost:8081", "http://localhost:3000"],
-    credentials: true
-};
+  origin: function(origin, callback){
+    const isWhitelisted = whitelist.indexOf(origin) !== -1;
+    callback(null, isWhitelisted);
+  },
+  credentials:true
+}
+// const corsOptions = {
+//     origin: ["http://localhost:8080", "http://localhost:8081", "http://localhost:3000"],
+//     credentials: true
+// };
 app.use(cors(corsOptions));
 
 app.use("/", chatRouter); // client
