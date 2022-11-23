@@ -15,7 +15,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-app.get("/", cors(corsOptions), (req, res) => {
+app.get("/", cors(), (req, res) => {
     res.render("index");
 })
 
