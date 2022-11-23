@@ -3,6 +3,8 @@ const socketIO = require('socket.io');
 const app = express();
 const cors = require('cors');
 
+app.use(cors());
+
 const path = require("path"); // client
 app.use(express.static(path.join(__dirname, "client"))); // client
 
@@ -13,9 +15,8 @@ app.use(express.urlencoded({extended: true}));
 //     origin: ["http://localhost:8080", "http://localhost:8081", "http://localhost:3000"],
 //     credentials: true
 // };
-app.use(cors());
 
-app.get("/", (req, res) => {
+app.get("/", (req, res, next) => {
     res.render("index");
 })
 
