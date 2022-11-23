@@ -1,4 +1,6 @@
-const socket = io("http://ec2-54-180-16-76.ap-northeast-2.compute.amazonaws.com:3000");
+const socket = io("http://ec2-54-180-16-76.ap-northeast-2.compute.amazonaws.com:3000", {
+    cors: {origin: '*'}
+});
 
 const id = 1234567890; // cookie 활용
 const moimId = 1;
