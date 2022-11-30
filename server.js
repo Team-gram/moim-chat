@@ -33,7 +33,7 @@ http.listen(3000);
 
 io.on("connection", (socket) => {
     socket.on("chat", (data) => {
-        socket.emit("chat", data);
+        io.emit("chat", data);
         console.log(`chat : ${data.id}, ${data.moimId}, ${data.name}, ${data.message}, ${data.createdAt}`)
     })
 })
