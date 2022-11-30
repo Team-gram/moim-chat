@@ -3,11 +3,9 @@ const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http, {
     cors: {
-        origin: "*",
-        methods: ["GET", "POST"],
-        credentials: true
+        origin: "*"
     }
-})
+});
 const cors = require('cors');
 
 const path = require("path"); // client
@@ -17,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 const corsOptions = {
-    origin: ["http://localhost:8080", "http://localhost:8081"],
+    origin: ["http://localhost:3000", "http://localhost:8080", "http://localhost:8081", "http://52.78.104.79:8080"],
     credentials: true
 };
 

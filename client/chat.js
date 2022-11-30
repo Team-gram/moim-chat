@@ -2,8 +2,10 @@
 //     cors: {origin: '*'}
 // });
 const socket = io("http://localhost:3000", {
-    cors: {origin: '*'}
+    cors: {origin: '*'},
+    transports: ['websocket']
 });
+
 const id = 1234567890; // cookie 활용
 const moimId = 1;
 const nickname = "minsu";
@@ -21,6 +23,10 @@ $(".send_btn").click(() => {
         createdAt: createdAt
     }
     socket.emit("chat", data);
+})
+
+socket.on("connect", () => {
+    console.log('connect')
 })
 
 socket.on("chat", (data) => {
